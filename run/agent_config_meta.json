@@ -1,0 +1,265 @@
+{
+  "keys": "E:\\nodeSoEasy\\soEasy\\config\\config.default.js",
+  "session": {
+    "maxAge": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-session\\config\\config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+    "protocolWhiteList": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+    "csrf": {
+      "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "useSession": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "ignoreJSON": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "cookieName": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "sessionName": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "headerName": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "bodyName": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "queryName": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xframe": {
+      "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "hsts": {
+      "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.local.js",
+      "maxAge": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "includeSubdomains": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "dta": {
+      "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "noopen": {
+      "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "nosniff": {
+      "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xssProtection": {
+      "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "csp": {
+      "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "policy": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js",
+      "checkAddress": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-security\\config\\config.default.js"
+  },
+  "jsonp": {
+    "limit": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "callback": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "csrf": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-jsonp\\config\\config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-onerror\\config\\config.default.js",
+    "templatePath": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-onerror\\config\\config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-i18n\\config\\config.default.js",
+    "dirs": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-i18n\\config\\config.default.js",
+    "queryField": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieField": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieDomain": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-i18n\\config\\config.default.js"
+  },
+  "watcher": {
+    "type": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-watcher\\config\\config.local.js",
+    "eventSources": {
+      "default": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-watcher\\config\\config.default.js",
+      "development": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-watcher\\config\\config.default.js"
+    }
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-schedule\\config\\config.default.js",
+      "file": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-schedule\\config\\config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-schedule\\config\\config.default.js"
+  },
+  "multipart": {
+    "mode": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "autoFields": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultCharset": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldSize": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fields": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileSize": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "files": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileExtensions": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "whitelist": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "tmpdir": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js",
+    "cleanSchedule": {
+      "cron": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-multipart\\config\\config.default.js"
+    }
+  },
+  "development": {
+    "watchDirs": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-development\\config\\config.default.js",
+    "ignoreDirs": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-development\\config\\config.default.js",
+    "fastReady": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-development\\config\\config.default.js",
+    "reloadOnDebug": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-development\\config\\config.default.js",
+    "overrideDefault": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-development\\config\\config.default.js"
+  },
+  "logrotator": {
+    "filesRotateByHour": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFiles": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxDays": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-logrotator\\config\\config.default.js"
+  },
+  "static": {
+    "prefix": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-static\\config\\config.default.js",
+    "dir": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-static\\config\\config.default.js",
+    "dynamic": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-static\\config\\config.default.js",
+    "preload": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-static\\config\\config.default.js",
+    "buffer": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-static\\config\\config.default.js",
+    "maxFiles": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-static\\config\\config.default.js"
+  },
+  "view": {
+    "root": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-view\\config\\config.default.js",
+    "cache": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-view\\config\\config.local.js",
+    "defaultExtension": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultViewEngine": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-view\\config\\config.default.js",
+    "mapping": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-view\\config\\config.default.js"
+  },
+  "env": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "name": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "proxy": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "maxProxyCount": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "protocolHeaders": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "ipHeaders": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "hostHeaders": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "pkg": {
+    "name": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "version": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "description": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "main": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "scripts": {
+      "dev": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+    },
+    "repository": {
+      "type": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "url": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+    },
+    "author": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "license": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "bugs": {
+      "url": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+    },
+    "homepage": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "dependencies": {
+      "egg": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+    },
+    "devDependencies": {
+      "egg-bin": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "baseDir": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "HOME": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "rundir": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "dump": {
+    "ignore": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "notFound": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "sitefile": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "middlewares": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "httpClient": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "formLimit": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "jsonLimit": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "strict": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "depth": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "logger": {
+    "dir": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "env": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "level": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "consoleLevel": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "outputJSON": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "buffer": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "appLogName": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "coreLogName": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "agentLogName": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "errorLogName": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "coreLogger": {
+      "consoleLevel": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.local.js"
+    },
+    "allowDebugAtProd": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheLookupInterval": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "request": {
+      "timeout": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "logging": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+  },
+  "coreMiddleware": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "workerStartTimeout": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "serverTimeout": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "port": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+      "hostname": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js",
+    "responseTimeout": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+  },
+  "onClientError": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\config.default.js"
+}

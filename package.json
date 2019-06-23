@@ -1,0 +1,29 @@
+{
+  "name": "soeasy",
+  "version": "1.0.0",
+  "description": "垃圾分类",
+  "main": "index.js",
+  "scripts": {
+    "dev": "egg-bin dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AviorAlong/soEasy.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AviorAlong/soEasy/issues"
+  },
+  "homepage": "https://github.com/AviorAlong/soEasy#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "egg": "^2.22.2",
+    "egg-sequelize": "^5.1.0",
+    "mysql2": "^1.6.5"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.13.1"
+  }
+}
