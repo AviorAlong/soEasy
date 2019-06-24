@@ -3,20 +3,18 @@ module.exports = app => {
   
     const Rubbish = app.model.define('rubbish', {
       r_name: STRING(30),
-      cId: INTEGER,
-      created_at: DATE,
-      updated_at: DATE
+      cId: INTEGER
     });
   
-    Rubbish.prototype.findByName = async function(name) {
+    Rubbish.findByName = async function(name) {
       return await this.findOne({
         where: {
-          c_name: name
+          r_name: name
         }
       })
     }
   
-    Rubbish.prototype.insertOne = async function({r_name,cId}) {
+    Rubbish.insert = async function({r_name,cId}) {
       return await this.create({
             r_name: r_name,
             cId: cId

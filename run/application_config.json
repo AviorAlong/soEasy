@@ -103,6 +103,7 @@
         "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-logrotator\\config\\locales",
         "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-static\\config\\locales",
         "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-view\\config\\locales",
+        "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-sequelize\\config\\locales",
         "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\locales",
         "E:\\nodeSoEasy\\soEasy\\config\\locales"
       ],
@@ -175,9 +176,21 @@
       "defaultViewEngine": "",
       "mapping": {}
     },
+    "sequelize": {
+      "dialect": "mysql",
+      "database": "rubbish_db",
+      "host": "47.98.167.18",
+      "port": 13306,
+      "username": "shial",
+      "password": "<String len: 10>",
+      "define": {
+        "freezeTableName": true,
+        "underscored": false
+      }
+    },
     "env": "local",
     "name": "soeasy",
-    "keys": "<String len: 4>",
+    "keys": "<String len: 8>",
     "proxy": false,
     "maxProxyCount": 0,
     "protocolHeaders": "x-forwarded-proto",
@@ -202,10 +215,14 @@
       },
       "homepage": "https://github.com/AviorAlong/soEasy#readme",
       "dependencies": {
-        "egg": "^2.22.2"
+        "axios": "^0.19.0",
+        "cheerio": "^1.0.0-rc.3",
+        "egg": "^2.22.2",
+        "egg-sequelize": "^5.1.0",
+        "mysql2": "^1.6.5"
       },
       "devDependencies": {
-        "egg-bin": "^4.13.0"
+        "egg-bin": "^4.13.1"
       }
     },
     "baseDir": "E:\\nodeSoEasy\\soEasy",
@@ -471,6 +488,17 @@
       "from": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
       "path": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-view",
       "version": "2.1.2"
+    },
+    "sequelize": {
+      "enable": true,
+      "package": "egg-sequelize",
+      "name": "sequelize",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "E:\\nodeSoEasy\\soEasy\\config\\plugin.js",
+      "path": "E:\\nodeSoEasy\\soEasy\\node_modules\\egg-sequelize",
+      "version": "5.1.0"
     }
   }
 }
