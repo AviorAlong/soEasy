@@ -19,6 +19,13 @@ module.exports = app => {
         }
       })
     }
+    Classify.findById = async function(id) {
+      return await this.findOne({
+        where: {
+          id: id
+        }
+      })
+    }
   
     return Classify;
   };

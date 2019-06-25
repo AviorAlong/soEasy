@@ -2,7 +2,7 @@ module.exports = app => {
     const { STRING, INTEGER, DATE } = app.Sequelize;
   
     const Rubbish = app.model.define('rubbish', {
-      r_name: STRING(30),
+      r_name: STRING(64),
       cId: INTEGER
     });
   
