@@ -32,6 +32,9 @@ class WXController extends Controller {
         md5sum.update(str);
         str = md5sum.digest("hex");
         return str;
+    };
+    async wxMsg(){
+        
     }
 }
 
