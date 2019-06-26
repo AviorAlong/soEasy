@@ -73,7 +73,7 @@
     "onerror": {
       "errorPageUrl": "",
       "appErrorFilter": null,
-      "templatePath": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
+      "templatePath": "/root/soEasy/soEasy/node_modules/egg-onerror/lib/onerror_page.mustache"
     },
     "i18n": {
       "defaultLocale": "en_US",
@@ -86,8 +86,8 @@
     "watcher": {
       "type": "development",
       "eventSources": {
-        "default": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-watcher\\lib\\event-sources\\default",
-        "development": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-watcher\\lib\\event-sources\\development"
+        "default": "/root/soEasy/soEasy/node_modules/egg-watcher/lib/event-sources/default",
+        "development": "/root/soEasy/soEasy/node_modules/egg-watcher/lib/event-sources/development"
       }
     },
     "customLogger": {
@@ -110,7 +110,7 @@
       "files": 10,
       "fileExtensions": [],
       "whitelist": null,
-      "tmpdir": "D:\\Temp\\egg-multipart-tmp\\soeasy",
+      "tmpdir": "/tmp/egg-multipart-tmp/soeasy",
       "cleanSchedule": {
         "cron": "0 30 4 * * *"
       }
@@ -133,14 +133,14 @@
     },
     "static": {
       "prefix": "/public/",
-      "dir": "E:\\myselfPro\\soEasy\\soEasy\\app\\public",
+      "dir": "/root/soEasy/soEasy/app/public",
       "dynamic": true,
       "preload": false,
       "buffer": false,
       "maxFiles": 1000
     },
     "view": {
-      "root": "E:\\myselfPro\\soEasy\\soEasy\\app\\view",
+      "root": "/root/soEasy/soEasy/app/view",
       "cache": false,
       "defaultExtension": ".html",
       "defaultViewEngine": "",
@@ -149,10 +149,10 @@
     "sequelize": {
       "dialect": "mysql",
       "database": "rubbish_db",
-      "host": "47.98.167.18",
+      "host": "127.0.0.1",
       "port": 13306,
-      "username": "shial",
-      "password": "<String len: 10>",
+      "username": "root",
+      "password": "<String len: 8>",
       "define": {
         "freezeTableName": true,
         "underscored": false
@@ -195,9 +195,9 @@
         "egg-bin": "^4.13.1"
       }
     },
-    "baseDir": "E:\\myselfPro\\soEasy\\soEasy",
-    "HOME": "C:\\Users\\along.shi",
-    "rundir": "E:\\myselfPro\\soEasy\\soEasy\\run",
+    "baseDir": "/root/soEasy/soEasy",
+    "HOME": "/root",
+    "rundir": "/root/soEasy/soEasy/run",
     "dump": {
       "ignore": "<Set>"
     },
@@ -227,7 +227,7 @@
       }
     },
     "logger": {
-      "dir": "E:\\myselfPro\\soEasy\\soEasy\\logs\\soeasy",
+      "dir": "/root/soEasy/soEasy/logs/soeasy",
       "encoding": "utf8",
       "env": "local",
       "level": "INFO",
@@ -302,8 +302,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-session",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-session",
       "version": "3.1.0"
     },
     "security": {
@@ -315,8 +315,8 @@
         "session"
       ],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-security",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-security",
       "version": "2.5.0"
     },
     "jsonp": {
@@ -328,8 +328,8 @@
         "security"
       ],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-jsonp",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-jsonp",
       "version": "2.0.0"
     },
     "onerror": {
@@ -341,8 +341,8 @@
         "jsonp"
       ],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-onerror",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-onerror",
       "version": "2.1.0"
     },
     "i18n": {
@@ -352,8 +352,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-i18n",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-i18n",
       "version": "2.1.1"
     },
     "watcher": {
@@ -363,8 +363,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-watcher",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-watcher",
       "version": "3.1.0"
     },
     "schedule": {
@@ -374,8 +374,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-schedule",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-schedule",
       "version": "3.6.4"
     },
     "multipart": {
@@ -387,8 +387,8 @@
         "schedule"
       ],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-multipart",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-multipart",
       "version": "2.7.1"
     },
     "development": {
@@ -402,8 +402,8 @@
       "env": [
         "local"
       ],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-development",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-development",
       "version": "2.4.3"
     },
     "logrotator": {
@@ -415,8 +415,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-logrotator",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-logrotator",
       "version": "3.1.0"
     },
     "static": {
@@ -426,8 +426,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-static",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-static",
       "version": "2.2.0"
     },
     "view": {
@@ -437,8 +437,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-view",
+      "from": "/root/soEasy/soEasy/node_modules/egg/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-view",
       "version": "2.1.2"
     },
     "sequelize": {
@@ -448,8 +448,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "E:\\myselfPro\\soEasy\\soEasy\\config\\plugin.js",
-      "path": "E:\\myselfPro\\soEasy\\soEasy\\node_modules\\egg-sequelize",
+      "from": "/root/soEasy/soEasy/config/plugin.js",
+      "path": "/root/soEasy/soEasy/node_modules/egg-sequelize",
       "version": "5.1.0"
     }
   }

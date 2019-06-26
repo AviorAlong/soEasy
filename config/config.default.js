@@ -2,10 +2,10 @@ exports.keys = 'somekeys';
 exports.sequelize = {
     dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
     database: 'rubbish_db',
-    host: '47.98.167.18',
+    host: '127.0.0.1',
     port: 13306,
-    username: 'shial',
-    password: 'zminfo@123',
+    username: 'root',
+    password: 'cypshi.x',
     define: {
         freezeTableName: true,
         underscored: false
