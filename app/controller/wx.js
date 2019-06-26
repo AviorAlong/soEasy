@@ -1,33 +1,35 @@
 const Controller = require('egg').Controller;
 
 class WXController extends Controller {
-    async index() {
-        var query = url.parse(req.url, true).query;
-        console.log("*** URL:" + req.url);
-        console.log(query);
-        var signature = query.signature;
-        var echostr = query.echostr;
-        var timestamp = query['timestamp'];
-        var nonce = query.nonce;
-        var oriArray = new Array();
+    async index() { 
+       let {query} = this.ctx;
+       console.log("*** URL:" + request.url);
+       console.log(query);
+       let query = url.parse(request.url, true).query;
+
+       let signature = query.signature;
+       let echostr = query.echostr;
+       let timestamp = query['timestamp'];
+       let nonce = query.nonce;
+       let oriArray = new Array();
         oriArray[0] = nonce;
         oriArray[1] = timestamp;
-        oriArray[2] = config.wechat_validate.token; //微信开发者中心页面里填的token
+        oriArray[2] = "token"; //微信开发者中心页面里填的token
         oriArray.sort();
-        var original = oriArray.join('');
+       let original = oriArray.join('');
         console.log("Original str : " + original);
         console.log("Signature : " + signature);
-        var scyptoString = sha1(original);
+       let scyptoString = sha1(original);
         if (signature == scyptoString) {
-            res.end(echostr);
+            this.body = echostr;
             console.log("Confirm and send echo back");
         } else {
-            res.end("false");
+           this.body = "false";
             console.log("Failed!");
         }
     };
     sha1(str) {
-        var md5sum = crypto.createHash("sha1");
+       let md5sum = crypto.createHash("sha1");
         md5sum.update(str);
         str = md5sum.digest("hex");
         return str;
