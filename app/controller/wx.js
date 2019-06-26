@@ -13,17 +13,17 @@ class WXController extends Controller {
        let oriArray = new Array();
         oriArray[0] = nonce;
         oriArray[1] = timestamp;
-        oriArray[2] = "cheyptoken"; //微信开发者中心页面里填的token
+        oriArray[2] = "chenyptoken"; //微信开发者中心页面里填的token
         oriArray.sort();
        let original = oriArray.join('');
         console.log("Original str : " + original);
         console.log("Signature : " + signature);
        let scyptoString = this.sha1(original);
         if (signature == scyptoString) {
-            this.body = echostr;
+            this.ctx.body = echostr;
             console.log("Confirm and send echo back");
         } else {
-           this.body = "false";
+           this.ctx.body = "false";
             console.log("Failed!");
         }
     };
