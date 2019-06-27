@@ -34,7 +34,7 @@ class WXController extends Controller {
         return str;
     };
     async wxMsg(){
-        
+	this.ctx.body = ''        
     }
 }
 
