@@ -50,14 +50,14 @@ class WXController extends Controller {
         let content = msg.Content
         let toUser = msg.ToUserName
         let fromUser = msg.FromUserName
-        let result = this.ctx.service.wxSevice.getResultByKw(content);
+        let lsInfo = this.ctx.service.wxSevice.getResultByKw(content);
         console.log(result)
         let modelTo =  { 
             ToUserName: fromUser,
             FromUserName: toUser,
             CreateTime: 1460537339,
             MsgType: 'text',
-            Content: JSON.stringify(result)
+            Content: JSON.stringify(lsInfo)
        }
         let xmlstr =  builder.buildObject(modelTo)
         console.log(xmlstr)
