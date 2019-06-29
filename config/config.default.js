@@ -22,3 +22,11 @@ exports.security = {
      ignore: '/wx'
   },
 }
+
+exports.cluster = {
+  listen: {
+    port: 30050,
+    hostname: '127.0.0.1',
+    // path: '/var/run/egg.sock',
+  }
+}
