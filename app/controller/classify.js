@@ -10,17 +10,19 @@ class ClassifyController extends Controller {
         this.ctx.body = '身边那么多垃圾，随便输入一个呗';
       }
       const service = ctx.service;
+      //查库
       let rName = await ctx.model.Rubbish.findByName(kw);
       if(rName){
         let cId = await ctx.model.Classify.findById(rName.cId);
         this.ctx.body = Object.assign({},JSON.parse(JSON.stringify(rName)),JSON.parse(JSON.stringify(cId)));
         return 
       }
-
+      //查不到就去搜
+      let ret = await service.classify.getClassify(kw);
       let name = ret.c_name ;
       let cInfo = ret.mainInfo;
-      let ret = await service.classify.getClassify(kw);
       let cId = await ctx.model.Classify.findByName(cInfo);
+
       if(!rName){
         ctx.model.Rubbish.insert({r_name: name,cId:cId.id})
       }
