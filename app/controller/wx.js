@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const xml = require('xml2js');
 const util = require('util')
 const xmlParser = new xml.Parser({explicitArray : false, ignoreAttrs : true})
-const builder = new xml2js.Builder();
+const builder = new xml.Builder();
 const promiseParser = util.promisify(xmlParser.parseString)
 class WXController extends Controller {
     async index() { 
