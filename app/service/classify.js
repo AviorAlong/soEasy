@@ -17,7 +17,7 @@ class ClassifyService extends Service {
     async getClassify(kw){
         let htm = await this.httpGet({
             params: {
-              kw: kw
+                "kw": kw
             }
           })
         let $ = cheerio.load(htm);
