@@ -40,13 +40,17 @@ async function main(kw){
     fs.writeFileSync(keysFile,JSON.stringify({keys:allKeys}))
 }
 
-
-
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms))
+}
 
 async function toGetallInfo(){
     let keys = require('../data/keys.json')
     for(let i in keys.keys){
-       await httpGet('http://127.0.0.1:7001/classify',{kw:i})
+       
+       await httpGet('http://127.0.0.1:30050/classify',{kw:"菜刀"})
+       await sleep(3000)
     }
 }
+
 toGetallInfo()
