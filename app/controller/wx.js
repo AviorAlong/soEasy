@@ -39,7 +39,7 @@ class WXController extends Controller {
     };
 
     async wxMsg(){
-        let {ctx} = this.ctx;
+        let {ctx} = this;
         let body = ctx.body;
       
        
