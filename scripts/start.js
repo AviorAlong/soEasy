@@ -48,9 +48,11 @@ async function toGetallInfo(){
     let keys = require('../data/keys.json')
     for(let i in keys.keys){
        
-       await httpGet('http://127.0.0.1:30050/classify',{params:{kw:i}})
+       let a= await httpGet('http://127.0.0.1:30050/classify',{params:{kw:keys.keys[i]}})
+       console.log(a);
        await sleep(3000)
     }
+    process.exit(0);
 }
 
 toGetallInfo()
