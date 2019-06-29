@@ -1,10 +1,13 @@
 const Controller = require('egg').Controller;
 const crypto = require('crypto');
-
+const xml = require('xml2js');
+const util = require('util')
+const xmlParser = new xml.Parser({explicitArray : false, ignoreAttrs : true})
+const builder = new xml2js.Builder();
+const promiseParser = util.promisify(xmlParser.parseString)
 class WXController extends Controller {
     async index() { 
        let {query} = this.ctx;
-       console.log(query);
 
        let signature = query.signature;
        let echostr = query.echostr;
@@ -27,15 +30,42 @@ class WXController extends Controller {
             console.log("Failed!");
         }
     };
+
     sha1(str) {
        let md5sum = crypto.createHash("sha1");
         md5sum.update(str);
         str = md5sum.digest("hex");
         return str;
     };
+
     async wxMsg(){
-	this.ctx.body = ''        
+        let {ctx} = this.ctx;
+        let body = ctx.body;
+      
+       
+        console.log('wechat msg:',body)
+        let result = await promiseParser(body, {trim: true})
+        let msg = JSON.parse(JSON.stringify(result));
+
+        let content = msg.Content
+        let toUser = msg.ToUserName
+        let fromUser = msg.FromUserName
+        let result = this.ctx.service.wxSevice.getResultByKw(content);
+        console.log(result)
+        let modelTo =  { 
+            ToUserName: fromUser,
+            FromUserName: toUser,
+            CreateTime: 1460537339,
+            MsgType: 'text',
+            Content: JSON.stringify(result)
+       }
+        let xmlstr =  builder.buildObject(modelTo)
+        console.log(xmlstr)
+	    this.ctx.body = xmlstr  
     }
 }
+
+
+
 
 module.exports = WXController;

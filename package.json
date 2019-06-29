@@ -23,7 +23,8 @@
     "egg": "^2.22.2",
     "egg-sequelize": "^5.1.0",
     "mysql2": "^1.6.5",
-    "urlencode": "^1.1.0"
+    "urlencode": "^1.1.0",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "egg-bin": "^4.13.1"

@@ -1,5 +1,4 @@
 const Controller = require('egg').Controller;
-const Service = require('egg').Service;
 
 class ClassifyController extends Controller {
   async index() {
