@@ -18,13 +18,16 @@ class ClassifyController extends Controller {
         return 
       }
       //查不到就去搜
-      let ret = await service.classify.getClassify(kw);
-      let name = ret.c_name ;
-      let cInfo = ret.mainInfo;
-      let cId = await ctx.model.Classify.findByName(cInfo);
-
+   
       if(!rName){
-        ctx.model.Rubbish.insert({r_name: name,cId:cId.id})
+        let ret = await service.classify.getClassify(kw);
+        let name = ret.c_name ;
+        let cInfo = ret.mainInfo;
+        let cId = await ctx.model.Classify.findByName(cInfo);  
+        console.log('查询结果',ret)
+        if(cId){
+          ctx.model.Rubbish.insert({r_name: name,cId:cId.id})
+        }
       }
       
       this.ctx.body = Object.assign({},ret,JSON.parse(JSON.stringify(cId)));

@@ -20,11 +20,12 @@ class ClassifyService extends Service {
               kw: kw
             }
           })
+        console.log(htm)
         let $ = cheerio.load(htm);
         let c_name = $('#txtKeyword').val();
         let searchKey = c_name;
         let mainInfo =$('.info > p > span').text()
-                
+      
         return {
             c_name: c_name,
             searchKey: searchKey,
