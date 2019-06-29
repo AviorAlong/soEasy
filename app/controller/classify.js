@@ -28,9 +28,10 @@ class ClassifyController extends Controller {
         if(cId){
           ctx.model.Rubbish.insert({r_name: name,cId:cId.id})
         }
+        this.ctx.body = Object.assign({},ret,JSON.parse(JSON.stringify(cId)));
       }
       
-      this.ctx.body = Object.assign({},ret,JSON.parse(JSON.stringify(cId)));
+      
   }
 }
 
