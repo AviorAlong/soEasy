@@ -50,7 +50,7 @@ class WXController extends Controller {
         }
         
         try{
-            let authRet = ctx.service.AuthSevice.auth();
+            let authRet = ctx.service.auth.auth();
             let buffer = []
             req.on('data',function(data){
                 buffer.push(data);
@@ -64,14 +64,14 @@ class WXController extends Controller {
                     let content = msg.Content
                     let toUser = msg.ToUserName
                     let fromUser = msg.FromUserName
-                    let lsInfo = ctx.service.wxSevice.getResultByKw(content);
+                    let lsInfo = ctx.service.wx.getResultByKw(content);
                     if(lsInfo){
                         lsInfo =  JSON.stringify(lsInfo)
                     }else{
                         lsInfo = `暂时未查询到您要查询的垃圾所属的分类，您可以试试口诀"猪吃是湿，猪不吃是干"`
                     }
                     console.log(result)
-                    let xmlstr = ctx.service.MsgService.textMsg(fromUser,toUser,lsInfo)
+                    let xmlstr = ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
                     this.ctx.body = xmlstr  
                        
                     
