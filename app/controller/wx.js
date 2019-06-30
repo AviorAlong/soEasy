@@ -41,12 +41,13 @@ class WXController extends Controller {
     
 
     async wxMsg(){
-        let {ctx} = this;
+        let that = this;
+        let {ctx} = that;
         let query = ctx.query;
         let req = ctx.req;
         if(!query){
             console.log('不可信的消息')
-            return this.ctx.body = "success"
+            return that.ctx.body = "success"
         }
         
         try{
@@ -73,17 +74,17 @@ class WXController extends Controller {
                     }
                     let xmlstr = await ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
                     console.log('转换后的数据：',xmlstr)
-                    ctx.body = xmlstr  
+                    that.ctx.body = xmlstr  
                        
                     
                 }else{
                     console.log('auth 未通过')
-                    ctx.body = 'success' 
+                    that.ctx.body = 'success' 
                 }
             })
         }catch(err){
             console.log(`处理消息出错了:${err}`)
-            ctx.body = 'success' 
+            that.ctx.body = 'success' 
         }
         
        
