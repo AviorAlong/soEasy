@@ -2,12 +2,15 @@
 const Service = require('egg').Service
 class MsgService extends Service {
    async textMsg(toUser,fromUser,content){
-        var xmlContent =  "<xml><ToUserName><![CDATA["+ toUser +"]]></ToUserName>";
-            xmlContent += "<FromUserName><![CDATA["+ fromUser +"]]></FromUserName>";
-            xmlContent += "<CreateTime>"+ new Date().getTime() +"</CreateTime>";
-            xmlContent += "<MsgType><![CDATA[text]]></MsgType>";
-            xmlContent += "<Content><![CDATA["+ content +"]]></Content></xml>";
-        return xmlContent;
+     let  txtXml =   `<xml>
+        <ToUserName><![CDATA[${toUser}]]></ToUserName>
+        <FromUserName><![CDATA[${fromUser}]]></FromUserName>
+        <CreateTime>${new Date().getTime()}</CreateTime>
+        <MsgType><![CDATA[text]]></MsgType>
+        <Content><![CDATA[${content}]]></Content>
+    </xml>`
+      
+        return txtXml;
     }
     async graphicMsg(toUser,fromUser,contentArr){
         var xmlContent =  "<xml><ToUserName><![CDATA["+ toUser +"]]></ToUserName>";

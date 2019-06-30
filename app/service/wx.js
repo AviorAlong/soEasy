@@ -25,7 +25,7 @@ class wxService extends Service {
         }
        
       }
-      result = `您要找的垃圾${kw}属于${classifyInfo.c_name}哦`
+      result = `您要找的垃圾"${kw}"属于${classifyInfo.c_name}哦`
       //查不到就去搜
       return result
       
