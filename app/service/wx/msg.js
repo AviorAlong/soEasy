@@ -1,6 +1,6 @@
 // 回复文本消息
-const service = require('egg').Service
-class MsgService extends service {
+const Service = require('egg').Service
+class MsgService extends Service {
    async textMsg(toUser,fromUser,content){
         var xmlContent =  "<xml><ToUserName><![CDATA["+ toUser +"]]></ToUserName>";
             xmlContent += "<FromUserName><![CDATA["+ fromUser +"]]></FromUserName>";

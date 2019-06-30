@@ -1,6 +1,6 @@
-const service = require('egg').Service
-class AuthSevice extends service{
-    async auth(){
+const Service = require('egg').Service
+class AuthSevice extends Service{
+    auth(){
         let {query} = this.ctx;
         let signature = query.signature;
         let echostr = query.echostr;

@@ -64,7 +64,7 @@ class WXController extends Controller {
                     let content = msg.Content
                     let toUser = msg.ToUserName
                     let fromUser = msg.FromUserName
-                    let lsInfo = this.ctx.service.wxSevice.getResultByKw(content);
+                    let lsInfo = ctx.service.wxSevice.getResultByKw(content);
                     if(lsInfo){
                         lsInfo =  JSON.stringify(lsInfo)
                     }else{
