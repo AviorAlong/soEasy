@@ -3,7 +3,6 @@ const Controller = require('egg').Controller;
 const xml = require('xml2js');
 const util = require('util')
 const xmlParser = new xml.Parser({explicitArray : false, ignoreAttrs : true,trim:true})
-const promiseParser = util.promisify(xmlParser.parseString)
 
 class WXController extends Controller {
     // async index() { 
@@ -38,7 +37,10 @@ class WXController extends Controller {
     //     return str;
     // };
 
-
+    async promiseParser(){
+        return util.promisify(xmlParser.parseString)
+    }
+    
     async wxMsg(){
         let {ctx} = this;
         let query = ctx.query;
@@ -56,7 +58,7 @@ class WXController extends Controller {
             });
             req.on('end',function(){
                 if(authRet){
-                    
+
                     let result = await promiseParser(body)
                     let msg = JSON.parse(JSON.stringify(result));
             
