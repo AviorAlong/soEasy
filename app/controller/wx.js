@@ -41,9 +41,12 @@ class WXController extends Controller {
     async wxMsg(){
         let {ctx} = this;
         let body = ctx.body;
-      
-       
+        let query = ctx.query;
         console.log('wechat msg:',body)
+        console.log('wechat msg:',query)
+        if(!body || !query){
+            return this.ctx.body = "success"
+        }
         let result = await promiseParser(body, {trim: true})
         let msg = JSON.parse(JSON.stringify(result));
 
