@@ -23,11 +23,12 @@ class wxService extends Service {
         let name = ret.c_name ;
         let cInfo = ret.mainInfo;
         let cId = await ctx.model.Classify.findByName(cInfo);  
-        console.log('查询结果',ret)
+        console.log('查询结果',ret,JSON.stringify(cId))
         if(cId){
-          ctx.model.Rubbish.insert({r_name: name,cId:cId.id})
+         await ctx.model.Rubbish.insert({r_name: name,cId:cId.id})
+         result = Object.assign({},ret,JSON.parse(JSON.stringify(cId)));
         }
-        result = Object.assign({},ret,JSON.parse(JSON.stringify(cId)));
+        result = Object.assign({},ret);
       }
       return result
       
