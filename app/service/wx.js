@@ -12,12 +12,12 @@ class wxService extends Service {
       let rName = await ctx.model.Rubbish.findByName(kw);
       let result = '';
       let classifyInfo = '';
-      if(rName){
-        classifyInfo = await ctx.model.Classify.findByName(rName.cId);
+      if(rName && rName.cId){
+        classifyInfo = await ctx.model.Classify.findById(rName.cId);
         
       }else{
         let ret = await service.classify.getClassify(kw);
-        if(ret ){
+        if(ret && ret.mainInfo){
           let cInfo = ret.mainInfo;
           classifyInfo = await ctx.model.Classify.findByName(cInfo); 
         }else{
