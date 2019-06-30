@@ -1,4 +1,5 @@
 const Service = require('egg').Service
+const crypto = require('crypto');
 class AuthSevice extends Service{
     auth(){
         let {query} = this.ctx;
