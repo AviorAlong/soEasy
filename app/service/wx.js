@@ -10,26 +10,23 @@ class wxService extends Service {
       const service = ctx.service;
       //查库
       let rName = await ctx.model.Rubbish.findByName(kw);
-      let result
+      let result = '';
+      let classifyInfo = '';
       if(rName){
-        let cId = await ctx.model.Classify.findById(rName.cId);
-        result = Object.assign({},JSON.parse(JSON.stringify(rName)),JSON.parse(JSON.stringify(cId)));
+        classifyInfo = await ctx.model.Classify.findByName(rName.cId);
         
-      }
-      //查不到就去搜
-   
-      if(!rName){
+      }else{
         let ret = await service.classify.getClassify(kw);
-        let name = ret.c_name ;
-        let cInfo = ret.mainInfo;
-        let cId = await ctx.model.Classify.findByName(cInfo);  
-        console.log('查询结果',ret,JSON.stringify(cId))
-        if(cId){
-         await ctx.model.Rubbish.insert({r_name: name,cId:cId.id})
-         result = Object.assign({},ret,JSON.parse(JSON.stringify(cId)));
+        if(ret ){
+          let cInfo = ret.mainInfo;
+          classifyInfo = await ctx.model.Classify.findByName(cInfo); 
+        }else{
+          return false
         }
-        result = Object.assign({},ret);
+       
       }
+      classifyInfo = `您要找的垃圾${kw}属于${classifyInfo.c_name}`
+      //查不到就去搜
       return result
       
   }
