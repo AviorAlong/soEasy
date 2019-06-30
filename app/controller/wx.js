@@ -1,10 +1,10 @@
 const Controller = require('egg').Controller;
-const crypto = require('crypto');
+// const crypto = require('crypto');
 const xml = require('xml2js');
 const util = require('util')
-const xmlParser = new xml.Parser({explicitArray : false, ignoreAttrs : true})
-const builder = new xml.Builder();
+const xmlParser = new xml.Parser({explicitArray : false, ignoreAttrs : true,trim:true})
 const promiseParser = util.promisify(xmlParser.parseString)
+
 class WXController extends Controller {
     // async index() { 
     //    let {query} = this.ctx;
@@ -38,6 +38,7 @@ class WXController extends Controller {
     //     return str;
     // };
 
+
     async wxMsg(){
         let {ctx} = this;
         let query = ctx.query;
@@ -56,7 +57,7 @@ class WXController extends Controller {
             req.on('end',function(){
                 if(authRet){
                     
-                    let result = await promiseParser(body, {trim: true})
+                    let result = await promiseParser(body)
                     let msg = JSON.parse(JSON.stringify(result));
             
                     let content = msg.Content
