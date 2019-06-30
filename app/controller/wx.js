@@ -64,14 +64,14 @@ class WXController extends Controller {
                     let content = msg.Content
                     let toUser = msg.ToUserName
                     let fromUser = msg.FromUserName
-                    let lsInfo = ctx.service.wx.getResultByKw(content);
+                    let lsInfo = await ctx.service.wx.getResultByKw(content);
                     if(lsInfo){
                         lsInfo =  JSON.stringify(lsInfo)
                     }else{
                         lsInfo = `暂时未查询到您要查询的垃圾所属的分类，请检查您输入的关键词格式是否正确，例如：如果您要搜索的垃圾是”苹果皮“，请您直接输入 苹果皮`
                     }
                     console.log(result)
-                    let xmlstr = ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
+                    let xmlstr = await ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
                     ctx.body = xmlstr  
                        
                     
