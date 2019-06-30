@@ -43,7 +43,7 @@ class WXController extends Controller {
     async wxMsg(){
         let {ctx} = this;
         let query = ctx.query;
-        let req = ctx.request;
+        let req = ctx.req;
         if(!query){
             console.log('不可信的消息')
             return this.ctx.body = "success"
