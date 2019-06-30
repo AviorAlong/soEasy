@@ -72,17 +72,17 @@ class WXController extends Controller {
                     }
                     console.log(result)
                     let xmlstr = ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
-                    this.ctx.body = xmlstr  
+                    ctx.body = xmlstr  
                        
                     
                 }else{
                     console.log('auth 未通过')
-                    this.ctx.body = 'success' 
+                    ctx.body = 'success' 
                 }
             })
         }catch(err){
             console.log(`处理消息出错了:${err}`)
-            this.ctx.body = 'success' 
+            ctx.body = 'success' 
         }
         
        
