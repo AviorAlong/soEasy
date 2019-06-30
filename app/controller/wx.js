@@ -58,7 +58,7 @@ class WXController extends Controller {
             req.on('end',async function(){
                 if(authRet){
 
-                    let result = await promiseParser(body);
+                    let result = await promiseParser(buffer);
                     let msg = JSON.parse(JSON.stringify(result));
             
                     let content = msg.Content
