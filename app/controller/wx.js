@@ -59,8 +59,8 @@ class WXController extends Controller {
                 if(authRet){
 
                     let result = await promiseParser(buffer);
-                    let msg = JSON.parse(JSON.stringify(result));
-            
+                    let jMsg = JSON.parse(JSON.stringify(result));
+                    let msg = jMsg.xml
                     let content = msg.Content
                     let toUser = msg.ToUserName
                     let fromUser = msg.FromUserName
@@ -68,7 +68,7 @@ class WXController extends Controller {
                     if(lsInfo){
                         lsInfo =  JSON.stringify(lsInfo)
                     }else{
-                        lsInfo = `暂时未查询到您要查询的垃圾所属的分类，您可以试试口诀"猪吃是湿，猪不吃是干"`
+                        lsInfo = `暂时未查询到您要查询的垃圾所属的分类，请检查您输入的关键词格式是否正确，例如：如果您要搜索的垃圾是”苹果皮“，请您直接输入 苹果皮`
                     }
                     console.log(result)
                     let xmlstr = ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
