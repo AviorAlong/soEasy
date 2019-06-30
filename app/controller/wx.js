@@ -72,6 +72,7 @@ class WXController extends Controller {
                         lsInfo = `暂时未查询到您要查询的垃圾所属的分类，请检查您输入的关键词格式是否正确，例如：如果您要搜索的垃圾是”苹果皮“，请您直接输入 苹果皮`
                     }
                     let xmlstr = await ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
+                    console.log('转换后的数据：',xmlstr)
                     ctx.body = xmlstr  
                        
                     
