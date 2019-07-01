@@ -17,7 +17,7 @@ class MsgService extends Service {
             });
     
             that.ctx.req.on('end',function(){
-                xml2js(data,{},function(err,json){
+                xml2js(data,{trim:true,explicitArray:false},function(err,json){
                     //自己的操作
                     if(err){
                         console.log('parse xml error',err)
