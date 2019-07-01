@@ -76,9 +76,12 @@ class WXController extends Controller {
                     }
                     let xmlstr = await ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
                     console.log('转换后的数据：',xmlstr);
-                    // that.ctx.set('Content-Type', 'text/xml');
-                    // that.ctx.body = xmlstr  
-                    res.send(xmlstr)
+                    console.log(ctx);
+                    ctx.set('Content-Type', 'text/xml');
+                    ctx.body = xmlstr
+                    // // that.ctx.set('Content-Type', 'text/xml');
+                    // // that.ctx.body = xmlstr  
+                    // res.send(xmlstr)
                     
                 }else{
                     console.log('auth 未通过')
