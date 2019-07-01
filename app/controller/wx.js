@@ -79,6 +79,7 @@ class WXController extends Controller {
                     console.log(ctx);
                     ctx.set('Content-Type', 'text/xml');
                     ctx.body = xmlstr
+                    console.log(ctx)
                     // // that.ctx.set('Content-Type', 'text/xml');
                     // // that.ctx.body = xmlstr  
                     // res.send(xmlstr)
