@@ -86,7 +86,7 @@ class WXController extends Controller {
                             break;
                         default: 
                            
-                            let lsInfo = await ctx.service.wx.getResultByKw(content);
+                            lsInfo = await ctx.service.wx.getResultByKw(content);
                             console.log('查到的数据：',lsInfo)
                             if(!lsInfo){
                                 lsInfo = `暂时未查询到您要查询的垃圾所属的分类，
