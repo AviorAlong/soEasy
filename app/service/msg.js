@@ -1,6 +1,6 @@
 // 回复文本消息
 const Service = require('egg').Service
-const xml2js = require('xml2js');
+const xml2js = require('xml2js').parseString;
 const util = require('util')
 
 
