@@ -75,7 +75,7 @@ class WXController extends Controller {
                     }
                     let xmlstr = await ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
                     console.log('转换后的数据：',xmlstr);
-                    taht.ctx.set('Content-Type', 'text/xml');
+                    that.ctx.set('Content-Type', 'text/xml');
                     that.ctx.body = xmlstr  
                     
                 }else{

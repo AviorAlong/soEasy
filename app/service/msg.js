@@ -2,13 +2,10 @@
 const Service = require('egg').Service
 class MsgService extends Service {
    async textMsg(toUser,fromUser,content){
-     let  txtXml =   `<xml>
-        <ToUserName><![CDATA[${toUser}]]></ToUserName>
-        <FromUserName><![CDATA[${fromUser}]]></FromUserName>
-        <CreateTime>${new Date().getTime()}</CreateTime>
-        <MsgType><![CDATA[text]]></MsgType>
-        <Content><![CDATA[${content}]]></Content>
-    </xml>`
+     let  txtXml = `<xml><ToUserName><![CDATA[${toUser}]]></ToUserName><FromUserName>
+     <![CDATA[${fromUser}]]></FromUserName><CreateTime>${new Date().getTime()}</CreateTime>
+     <MsgType><![CDATA[text]]></MsgType><Content><![CDATA[${content}]]>
+     </Content></xml>`
       
         return txtXml;
     }
