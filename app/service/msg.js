@@ -21,7 +21,7 @@ class MsgService extends Service {
                     //自己的操作
                     if(err){
                         console.log('parse xml error',err)
-                        reject('xml parse error')
+                       return reject('xml parse error')
                     }
                     console.log("res is "+JSON.stringify(json));
                     resolve(json);
@@ -29,7 +29,7 @@ class MsgService extends Service {
             });
         });
     }
-    
+
     async textMsg(toUser,fromUser,content){
      let  txtXml = `<xml><ToUserName><![CDATA[${toUser}]]>
      </ToUserName><FromUserName><![CDATA[${fromUser}]]>
