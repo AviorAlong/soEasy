@@ -53,7 +53,7 @@ class WXController extends Controller {
         try{
             let authRet = ctx.service.auth.auth();
             let buffer = []
-            return this.ctx.body = "success"
+            // return this.ctx.body = "success"
             req.on('data',function(data){
                 buffer.push(data);
             });
