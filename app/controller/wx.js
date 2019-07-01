@@ -61,8 +61,9 @@ class WXController extends Controller {
                 let content = msg.Content
                 let toUser = msg.ToUserName
                 let fromUser = msg.FromUserName
-                let msgType = msg.MsgType.toLowerCase()
-                let event = msg.Event.toLowerCase()
+                ctx.logger.info(msg)
+                let msgType = msg.MsgType && msg.MsgType.toLowerCase()
+                let event = msg.Event && msg.Event.toLowerCase()
                 let xmlstr = '';
                 let lsInfo = ''
                 ctx.logger.info(`用户${fromUser}搜索词：${content}`)
