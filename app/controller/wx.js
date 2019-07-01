@@ -1,9 +1,6 @@
 const Controller = require('egg').Controller;
 // const crypto = require('crypto');
-const xml = require('xml2js');
-const util = require('util')
-const xmlParser = new xml.Parser({explicitArray : false, ignoreAttrs : true,trim:true})
-const promiseParser = util.promisify(xmlParser.parseString)
+
  
 class WXController extends Controller {
     // async index() { 
@@ -55,40 +52,33 @@ class WXController extends Controller {
             let authRet = ctx.service.auth.auth();
             let buffer = []
             // return this.ctx.body = "success"
-            req.on('data',function(data){
-                buffer.push(data);
-            });
-            req.on('end',async function(){
-                if(authRet){
+            if(authRet){
 
-                    let result = await promiseParser(buffer);
-                    let jMsg = JSON.parse(JSON.stringify(result));
-                    let msg = jMsg.xml
-                    let content = msg.Content
-                    let toUser = msg.ToUserName
-                    let fromUser = msg.FromUserName
-                    console.log(result)
-
-                    let lsInfo = await ctx.service.wx.getResultByKw(content);
-                    console.log('查到的数据：',lsInfo)
-                    if(!lsInfo){
-                        lsInfo = `暂时未查询到您要查询的垃圾所属的分类，请检查您输入的关键词格式是否正确，例如：如果您要搜索的垃圾是”苹果皮“，请您直接输入 苹果皮`
-                    }
-                    let xmlstr = await ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
-                    console.log('转换后的数据：',xmlstr);
-                    console.log(ctx);
-                    ctx.set('Content-Type', 'text/xml');
-                    ctx.body = xmlstr
-                    console.log(ctx)
-                    // // that.ctx.set('Content-Type', 'text/xml');
-                    // // that.ctx.body = xmlstr  
-                    // res.send(xmlstr)
-                    
-                }else{
-                    console.log('auth 未通过')
-                    that.ctx.body = 'success' 
+                let jMsg = await ctx.service.msg.xmlpaser();
+                let msg = jMsg.xml
+                let content = msg.Content
+                let toUser = msg.ToUserName
+                let fromUser = msg.FromUserName
+                console.log(jMsg)
+                let lsInfo = await ctx.service.wx.getResultByKw(content);
+                console.log('查到的数据：',lsInfo)
+                if(!lsInfo){
+                    lsInfo = `暂时未查询到您要查询的垃圾所属的分类，请检查您输入的关键词格式是否正确，例如：如果您要搜索的垃圾是"苹果皮"，请您直接输入 苹果皮`
                 }
-            })
+                let xmlstr = await ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
+                console.log('转换后的数据：',xmlstr);
+                console.log(ctx);
+                ctx.set('Content-Type', 'text/xml');
+                ctx.body = xmlstr
+                console.log(ctx)
+                // // that.ctx.set('Content-Type', 'text/xml');
+                // // that.ctx.body = xmlstr  
+                // res.send(xmlstr)
+                
+            }else{
+                console.log('auth 未通过')
+                that.ctx.body = 'success' 
+            }
         }catch(err){
             console.log(`处理消息出错了:${err}`)
             that.ctx.body = 'success' 

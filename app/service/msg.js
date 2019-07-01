@@ -1,8 +1,41 @@
 // 回复文本消息
 const Service = require('egg').Service
+const xml2js = require('xml2js');
+const util = require('util')
+
+
 class MsgService extends Service {
-   async textMsg(toUser,fromUser,content){
-     let  txtXml = `<xml><ToUserName><![CDATA[${toUser}]]></ToUserName><FromUserName><![CDATA[${fromUser}]]></FromUserName><CreateTime>${new Date().getTime()}</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[${content}]]></Content></xml>`
+
+    async xmlpaser(){
+        let that = this;
+        return new Promise((resolve,reject)=>{
+            let data = '';
+            let json = {};
+            that.ctx.req.setEncoding('utf8');
+            that.ctx.req.on('data',function(chunk){
+                data += chunk;
+            });
+    
+            that.ctx.req.on('end',function(){
+                xml2js(data,{},function(err,json){
+                    //自己的操作
+                    if(err){
+                        console.log('parse xml error',err)
+                        reject('xml parse error')
+                    }
+                    console.log("res is "+JSON.stringify(json));
+                    resolve(json);
+                })
+            });
+        });
+    }
+    
+    async textMsg(toUser,fromUser,content){
+     let  txtXml = `<xml><ToUserName><![CDATA[${toUser}]]>
+     </ToUserName><FromUserName><![CDATA[${fromUser}]]>
+     </FromUserName><CreateTime>${new Date().getTime()}</CreateTime>
+     <MsgType><![CDATA[text]]></MsgType><Content><![CDATA[${content}]]>
+     </Content></xml>`
       
         return  txtXml;
     }
