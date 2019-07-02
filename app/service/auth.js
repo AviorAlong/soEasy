@@ -2,25 +2,26 @@ const Service = require('egg').Service
 const crypto = require('crypto');
 class AuthSevice extends Service{
     auth(){
-        let {query} = this.ctx;
+        let {ctx} = this
+        let {query} = ctx;
         let signature = query.signature;
         let echostr = query.echostr;
         let timestamp = query['timestamp'];
         let nonce = query.nonce;
         let oriArray = new Array();
-         oriArray[0] = nonce;
-         oriArray[1] = timestamp;
-         oriArray[2] = "chenyptoken"; //微信开发者中心页面里填的token
-         oriArray.sort();
+        oriArray[0] = nonce;
+        oriArray[1] = timestamp;
+        oriArray[2] = "chenyptoken"; //微信开发者中心页面里填的token
+        oriArray.sort();
         let original = oriArray.join('');
-         ctx.logger.info("Original str : " + original);
-         ctx.logger.info("Signature : " + signature);
+        console.log("Original str : " + original);
+        console.log("Signature : " + signature);
         let scyptoString = this.sha1(original);
-         if (signature == scyptoString) {
+        if(signature == scyptoString) {
             return true 
-         } else {
+        } else {
            return false
-         }
+        }
     }
 
     

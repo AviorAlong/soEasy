@@ -20,10 +20,10 @@ class MsgService extends Service {
                 xml2js(data,{trim:true,explicitArray:false},function(err,json){
                     //自己的操作
                     if(err){
-                        ctx.logger.info('parse xml error',err)
+                        console.log('parse xml error',err)
                        return reject('xml parse error')
                     }
-                    ctx.logger.info("res is "+JSON.stringify(json));
+                    console.log("res is "+JSON.stringify(json));
                     resolve(json);
                 })
             });
