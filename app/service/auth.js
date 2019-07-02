@@ -13,8 +13,8 @@ class AuthSevice extends Service{
          oriArray[2] = "chenyptoken"; //微信开发者中心页面里填的token
          oriArray.sort();
         let original = oriArray.join('');
-         console.log("Original str : " + original);
-         console.log("Signature : " + signature);
+         ctx.logger.info("Original str : " + original);
+         ctx.logger.info("Signature : " + signature);
         let scyptoString = this.sha1(original);
          if (signature == scyptoString) {
             return true 

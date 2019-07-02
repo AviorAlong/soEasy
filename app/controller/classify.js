@@ -8,7 +8,7 @@ class ClassifyController extends Controller {
       if(!kw){
         this.ctx.body = '身边那么多垃圾，随便输入一个呗';
       }
-      console.log(`kw:${kw}`)
+      ctx.logger.info(`kw:${kw}`)
       const service = ctx.service;
       //查库
       let rName = await ctx.model.Rubbish.findByName(kw);
@@ -24,7 +24,7 @@ class ClassifyController extends Controller {
         let name = ret.c_name ;
         let cInfo = ret.mainInfo;
         let cId = await ctx.model.Classify.findByName(cInfo);  
-        console.log('查询结果',ret)
+        ctx.logger.info('查询结果',ret)
         if(cId){
           ctx.model.Rubbish.insert({r_name: name,cId:cId.id})
         }

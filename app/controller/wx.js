@@ -16,15 +16,15 @@ class WXController extends Controller {
     //     oriArray[2] = "chenyptoken"; //微信开发者中心页面里填的token
     //     oriArray.sort();
     //    let original = oriArray.join('');
-    //     console.log("Original str : " + original);
-    //     console.log("Signature : " + signature);
+    //     ctx.logger.info("Original str : " + original);
+    //     ctx.logger.info("Signature : " + signature);
     //    let scyptoString = this.sha1(original);
     //     if (signature == scyptoString) {
     //         this.ctx.body = echostr;
-    //         console.log("Confirm and send echo back");
+    //         ctx.logger.info("Confirm and send echo back");
     //     } else {
     //        this.ctx.body = "false";
-    //         console.log("Failed!");
+    //         ctx.logger.info("Failed!");
     //     }
     // };
 
@@ -44,7 +44,7 @@ class WXController extends Controller {
         let req = ctx.req;
         let res = ctx.res;
         if(!query){
-            console.log('不可信的消息')
+            ctx.logger.info('不可信的消息')
             return that.ctx.body = "success"
         }
         
@@ -59,26 +59,39 @@ class WXController extends Controller {
                 let content = msg.Content
                 let toUser = msg.ToUserName
                 let fromUser = msg.FromUserName
-                let msgType = msg.MsgType
-                switch(msgType){
-                    
+                let msgType = msg.MsgType.toLowerCase()
+                if(msgType === 'text'){
+                    switch(content){
+                        case '口诀': 
+                            return 
+                        case '花边':
+                        default:
+    
+                    }
+                }else if(msgType === 'event'){
+                    switch(msgType){
+                        case 'subscribe': 
+                        case 'click':
+    
+                    }
                 }
-                console.log(jMsg)
+                
+                ctx.logger.info(jMsg)
                 let lsInfo = await ctx.service.wx.getResultByKw(content);
-                console.log('查到的数据：',lsInfo)
+                ctx.logger.info('查到的数据：',lsInfo)
                 if(!lsInfo){
                     lsInfo = `暂时未查询到您要查询的垃圾所属的分类，请检查您输入的关键词格式是否正确，例如：如果您要搜索的垃圾是"苹果皮"，请您直接输入 苹果皮`
                 }
                 let xmlstr = await ctx.service.msg.textMsg(fromUser,toUser,lsInfo)
-                console.log('转换后的数据：',xmlstr);
+                ctx.logger.info('转换后的数据：',xmlstr);
                 ctx.set('Content-Type', 'text/xml');
                 ctx.body = xmlstr
             }else{
-                console.log('auth 未通过')
+                ctx.logger.info('auth 未通过')
                 that.ctx.body = 'success' 
             }
         }catch(err){
-            console.log(`处理消息出错了:${err}`)
+            ctx.logger.info(`处理消息出错了:${err}`)
             that.ctx.body = 'success' 
         }
         

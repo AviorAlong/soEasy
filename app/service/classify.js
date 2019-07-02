@@ -11,7 +11,7 @@ class ClassifyService extends Service {
             let ret = await axios.get(`http://trash.lhsr.cn/sites/feiguan/trashTypes_2/TrashQuery.aspx`,param);
             return ret.data
         }catch(err){
-            console.log(err)
+            ctx.logger.info(err)
         }
     }
     async getClassify(kw){
@@ -32,7 +32,7 @@ class ClassifyService extends Service {
                 mainInfo: mainInfo
             }
         }catch(err){
-            console.log(err)
+            ctx.logger.info(err)
             return false
         }
        

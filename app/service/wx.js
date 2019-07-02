@@ -6,7 +6,7 @@ class wxService extends Service {
       if(!kw){
         this.ctx.body = '身边那么多垃圾，随便输入一个呗';
       }
-      console.log(`kw:${kw}`)
+      ctx.logger.info(`kw:${kw}`)
       const service = ctx.service;
       //查库
       let rName = await ctx.model.Rubbish.findByName(kw);
