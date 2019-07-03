@@ -8,7 +8,7 @@ class ClassifyService extends Service {
 
     async httpGet(param){
         try {
-            let ret = await axios.get(`http://trash.lhsr.cn/sites/feiguan/trashTypes_2/TrashQuery.aspx`,param);
+            let ret = await axios.get(`${global.config.search.shfb}`,param);
             return ret.data
         }catch(err){
             console.log(err)

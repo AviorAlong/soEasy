@@ -30,3 +30,18 @@ exports.cluster = {
     // path: '/var/run/egg.sock',
   }
 }
+
+exports.wxApi = {
+   "access_token":"https://api.weixin.qq.com/cgi-bin/token",
+   "menu": "https://api.weixin.qq.com/cgi-bin/menu/create?access_token="
+}
+
+exports.wxParam ={
+  appId:"wx4aa6e37fb8fb1a82",
+  appSecret:"dbc812b7a1507046dca742764889e951"
+}
+
+exports.search = {
+  shfb: "http://trash.lhsr.cn/sites/feiguan/trashTypes_2/TrashQuery.aspx",
+  lsdq: "http://api.lvsediqiu.com/official/wiki/search"
+}

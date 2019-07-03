@@ -3,40 +3,24 @@ const Controller = require('egg').Controller;
 
  
 class WXController extends Controller {
-    // async index() { 
-    //    let {query} = this.ctx;
+    async index() { 
+       let ctx = this.ctx;
+       let {query} = ctx;
+       let echostr = query.echostr;
+       let authRet = ctx.service.auth.auth();
 
-    //    let signature = query.signature;
-    //    let echostr = query.echostr;
-    //    let timestamp = query['timestamp'];
-    //    let nonce = query.nonce;
-    //    let oriArray = new Array();
-    //     oriArray[0] = nonce;
-    //     oriArray[1] = timestamp;
-    //     oriArray[2] = "chenyptoken"; //微信开发者中心页面里填的token
-    //     oriArray.sort();
-    //    let original = oriArray.join('');
-    //     ctx.logger.info("Original str : " + original);
-    //     ctx.logger.info("Signature : " + signature);
-    //    let scyptoString = this.sha1(original);
-    //     if (signature == scyptoString) {
-    //         this.ctx.body = echostr;
-    //         ctx.logger.info("Confirm and send echo back");
-    //     } else {
-    //        this.ctx.body = "false";
-    //         ctx.logger.info("Failed!");
-    //     }
-    // };
-
-    // sha1(str) {
-    //    let md5sum = crypto.createHash("sha1");
-    //     md5sum.update(str);
-    //     str = md5sum.digest("hex");
-    //     return str;
-    // };
-
-    
-
+        if (authRet) {
+            
+            this.ctx.body = echostr;
+            ctx.logger.info("Confirm and send echo back");
+        } else {
+            this.ctx.body = "false";
+            ctx.logger.info("Failed!");
+        }
+    };
+    async menu(){
+       return await this.ctx.service.wx.setMenu()
+    }
     async wxMsg(){
         let that = this;
         let {ctx} = that;
@@ -73,31 +57,26 @@ class WXController extends Controller {
                             lsInfo= `猪能吃的是湿垃圾，猪都不要吃的是干垃圾，猪吃了会死的是有害垃圾，可以卖出去换猪的是可回收垃圾`;
                             break;
                         case '互联网人':
-                            lsInfo= `不好意思，这类人不适合生产垃圾，因为他们<strong>没时间</strong>扔垃圾`;
+                            lsInfo= `不好意思，这类人不适合生产垃圾，因为他们“没-时-间”扔垃圾`;
                             break;
                         case '趣事':
-                            lsInfo= `7月1日早晨，小朱去扔干垃圾，垃圾管理员小张放猪出去试吃，猪不吃，小张便给小朱开了第一张垃圾分类的罚单，罚金200元；
-                            小朱很是生气，怒问凭什么开200的罚单，法律规定罚金在50-200之间，为什么不是开50；
-                            小张撇了撇嘴说道，行人违反道路交通安全法律，法律规定5-50元罚款，你见过哪个交警开5元的罚单了，
-                            小朱暗暗点头，觉得甚是有理，第二天小朱还去扔湿垃圾，结果猪死了，请问小朱第二天扔了什么垃圾？`.replace(/^\s*/gm, '');
+                            lsInfo= `段子手写代码去了，再等等吧`.replace(/^\s*/gm, '');
 
                             break;
                         case '投放时间':
                             
                             lsInfo= `最新规定:上午7:00至9:00、下午5:30至7:30为垃圾投放时间`
                             break;
+                        case /玉萍$/.test(content):
+                            
+                            lsInfo= `温馨提示，您要找的可能是朕的小可爱，请注意言辞，否则告诉你麻麻` 
+                            break;   
                         default: 
                            
                             lsInfo = await ctx.service.wx.getResultByKw(content);
                             console.log('查到的数据：',lsInfo)
                             if(!lsInfo){
-                                lsInfo = `
-                                暂时未查询到您要查询的垃圾所属的分类，请检查您输入的关键词格式是否正确，例如：如果您要搜索的垃圾是"果皮"，请您直接输入 果皮； 
-                                您也可
-                                输入：“口诀”，查看垃圾分类的野口决；
-                                输入: “互联网人”，查看互联网人的垃圾分类；
-                                输入：“趣事”，查看垃圾分类趣事问答；
-                                输入：“投放时间”，查看最新垃圾分类投放时间；`.replace(/^\s*/gm, '');
+                                lsInfo = `未查询到您要查询的垃圾所属的分类(-^-)，小易这就去把老板拖回来给您找`.replace(/^\s*/gm, '');
                             }
                             
 
