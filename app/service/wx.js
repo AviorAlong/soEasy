@@ -3,7 +3,11 @@ const path = require('path')
 const utilReq = require('../util/easyRequest')
 const utilJson = require('../util/JsonFile')
 const menuConf = require('../../config/menu')
+const Sequelize = require('sequelize');
+const _ = require('lodash');
+const Op = Sequelize.Op;
 const expiresIn = 7180
+
 class wxService extends Service {
    
   async getAccessToken(){
@@ -12,7 +16,7 @@ class wxService extends Service {
       let curTime = Date.parse(new Date())/1000;
       if(token.token && token.startTime){
          let expires = curTime - token.startTime 
-         if(expires < 7200){
+         if(expires < expiresIn){
            return token
          }
       }
@@ -46,7 +50,17 @@ class wxService extends Service {
       return false
     }
   };
-
+  //实物信息
+  realMsg(r,c){
+    return `"${r}"属于"${c.c_name}"\n` +
+    `${c.c_explainTit}:${c.c_explain}\n`+
+    `${c.c_includeTit}:${c.c_include}\n`+
+    `${c.c_demandTit}:${c.c_demand}`
+  }
+  // 推荐信息
+  recommenMsg(msg){
+    return `"${kw}":"${classifyInfo.c_name}"\n`
+  }
   async getResultByKw(kw) {
       const {ctx} = this;
       if(!kw){
@@ -54,27 +68,50 @@ class wxService extends Service {
       }
       
       const service = ctx.service;
-      //查库
-      let rName = await ctx.model.Rubbish.findByName(kw);
+      //查垃圾
+  
+      let rub = await Promise.all([ctx.model.Rubbish.findByName(kw),ctx.model.Rubbish.findAll({r_name:{[Op.like]:kw}},5)]);
       let result = '';
-      let classifyInfo = '';
-      if(rName && rName.cId){
-        classifyInfo = await ctx.model.Classify.findById(rName.cId);
-        
+      let classifies = [];
+      let uniqRet = rub[0];
+      let unUniqRet = rub[1] || [];
+      let cids =  _.map(unUniqRet,(u)=>{return u.cId})
+      //合并数据
+      if(uniqRet && uniqRet.cId){
+         unUniqRet  = unUniqRet.push(uniqRet);
+        cids = _.uniq(cids.push(uniqRet.cId))
+      }
+      let allRubs = unUniqRet;
+      if(cids.length > 0){
+        //查垃圾分类
+        classifies = await ctx.model.Classify.findAll(cids);
+        for(let i of allRubs){
+          //实物
+          let rMsg = '';
+          let rcMsg = ''
+          let c = _.find(classifies,(cs)=>{return cs.id = i.cId})
+          if(i.r_name === kw){
+            rMsg = this.realMsg(i.r_name,c);
+          }else{
+          //推荐
+            rcMsg = this.recommenMsg(i.r_name,c)
+          }
+        }
+        // 拼接结果
+        result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的lj，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`
       }else{
-        let ret = await service.classify.getClassify(kw);
-        if(ret && ret.mainInfo){
-          let cInfo = ret.mainInfo;
-          classifyInfo = await ctx.model.Classify.findByName(cInfo); 
+        let ret = await Promise.all([service.data.getClassifyFromShfb(kw),service.data.getClassifyFromLsdp(kw)]) ;
+        let shfb = ret[0];
+        let lsdq = ret[1];
+        if(shfb || lsdq ){
+          allRubs = _.union[shfb,lsdq]
+          classifies = await ctx.model.Classify.findByName(cInfo); 
         }else{
           return false
         }
        
       }
-      result = `"${kw}"属于"${classifyInfo.c_name}"\n` +
-               `${classifyInfo.c_explainTit}:${classifyInfo.c_explain}\n`+
-               `${classifyInfo.c_includeTit}:${classifyInfo.c_include}\n`+
-               `${classifyInfo.c_demandTit}:${classifyInfo.c_demand}`
+    
       //查不到就去搜
       return result
       

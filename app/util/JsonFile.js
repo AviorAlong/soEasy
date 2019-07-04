@@ -8,7 +8,7 @@ exports.readJosn = async (file)=>{
 
 exports.writeJosn = async (content,file)=>{
     let data = JSON.stringify(content)
-    let content =  fs.writeFileSync(file,data);
+    fs.writeFileSync(file,data);
 }
  
  

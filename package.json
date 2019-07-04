@@ -22,6 +22,7 @@
     "cheerio": "^1.0.0-rc.3",
     "egg": "^2.22.2",
     "egg-sequelize": "^5.1.0",
+    "lodash": "^4.17.11",
     "mysql2": "^1.6.5",
     "urlencode": "^1.1.0",
     "xml2js": "^0.4.19"
