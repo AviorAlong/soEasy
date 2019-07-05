@@ -3,7 +3,7 @@ module.exports = app => {
     //test
     router.get('/', controller.home.index);
     //数据导入
-    router.post(`/data/import`,controller.data.index);
+    router.post(`/data/import`,controller.data.import);
     //微信认证
     router.get('/wx',controller.wx.index);
     //自动回复
