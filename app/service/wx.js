@@ -53,13 +53,13 @@ class wxService extends Service {
   //实物信息
   realMsg(r,c){
     return `"${r}"属于"${c.c_name}"\n` +
-    `${c.c_explainTit}:${c.c_explain}\n`+
-    `${c.c_includeTit}:${c.c_include}\n`+
-    `${c.c_demandTit}:${c.c_demand}`
+    `${c.c_explainTit}:\n${c.c_explain}\n`+
+    `${c.c_includeTit}:\n${c.c_include}\n`+
+    `${c.c_demandTit}:\n${c.c_demand}`
   }
   // 推荐信息
   recommenMsg(msg,c){
-    return `"${msg}":"${c.c_name}"\n`
+    return `"${msg}":"\n${c.c_name}"\n`
   }
 
   //处理数据
