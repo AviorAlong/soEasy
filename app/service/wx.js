@@ -102,7 +102,7 @@ class wxService extends Service {
       // }
       // let allRubs = unUniqRet;
       if(allRubs.length > 0){
-        let cids =  _.map(rubbs,(r)=>{return r.cId})
+        let cids =  _.map(allRubs,(r)=>{return r.cId})
         //查垃圾分类
         classifies = await ctx.model.Classify.findAllById(cids);
         let {rMsg,rcMsg} = this.getSearchMsg(classifies,allRubs,kw)
