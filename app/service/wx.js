@@ -90,24 +90,24 @@ class wxService extends Service {
       const service = ctx.service;
       //查垃圾
   
-      let rub = await Promise.all([ctx.model.Rubbish.findByName(kw),ctx.model.Rubbish.findAllByParam({r_name:{[Op.like]:kw}},5)]);
+      // let rub = await Promise.all([ctx.model.Rubbish.findByName(kw),ctx.model.Rubbish.findAllByParam({r_name:{[Op.like]:kw}},5)]);
+      let rub = await ctx.model.Rubbish.findAllByParam({r_name:{[Op.like]:kw}},5)
       let result = '';
       let classifies = [];
-      let uniqRet = rub[0];
-      let unUniqRet = rub[1] || [];
-      let cids =  _.map(unUniqRet,(u)=>{return u.cId})
+      let allRubs = rub || [];
       //合并数据
-      if(uniqRet && uniqRet.cId){
-         unUniqRet  = unUniqRet.push(uniqRet);
-        cids = _.uniq(cids.push(uniqRet.cId))
-      }
-      let allRubs = unUniqRet;
-      if(cids.length > 0){
+      // if(uniqRet && uniqRet.cId){
+      //    unUniqRet  = unUniqRet.push(uniqRet);
+      //   cids = _.uniq(cids.push(uniqRet.cId))
+      // }
+      // let allRubs = unUniqRet;
+      if(allRubs.length > 0){
+        let cids =  _.map(rubbs,(r)=>{return r.cId})
         //查垃圾分类
         classifies = await ctx.model.Classify.findAllById(cids);
         let {rMsg,rcMsg} = this.getSearchMsg(classifies,allRubs,kw)
         // 拼接结果
-        result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`
+        result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您想找:\n${rcMsg}`:''}`
       }else{
         // 去两个网站查数据
         let ret = await Promise.all([service.data.getClassifyFromShfb(kw),service.data.getClassifyFromLsdp(kw)]) ;
@@ -120,14 +120,11 @@ class wxService extends Service {
           let cids = _.map(allRubs,(a)=>{return a.cId})
           classifies = await ctx.model.Classify.findAllById(cids);
           let {rMsg,rcMsg} = this.getSearchMsg(classifies,allRubs,kw)
-          result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`
+          result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您想找:\n${rcMsg}`:''}`
           
         }else{
           result =  this.someFunny()
         }
-       
-        
-       
       }
     
       //查不到就去搜
