@@ -58,12 +58,12 @@ class wxService extends Service {
     `${c.c_demandTit}:${c.c_demand}`
   }
   // 推荐信息
-  recommenMsg(msg){
-    return `"${kw}":"${classifyInfo.c_name}"\n`
+  recommenMsg(msg,c){
+    return `"${msg}":"${c.c_name}"\n`
   }
 
   //处理数据
-  getSearchMsg(classifies,allRubs){
+  getSearchMsg(classifies,allRubs,kw){
       let rMsg = '';
       let rcMsg = ''
       for(let i of allRubs){
@@ -105,7 +105,7 @@ class wxService extends Service {
       if(cids.length > 0){
         //查垃圾分类
         classifies = await ctx.model.Classify.findAllById(cids);
-        let {rMsg,rcMsg} = this.getSearchMsg(classifies,allRubs)
+        let {rMsg,rcMsg} = this.getSearchMsg(classifies,allRubs,kw)
         // 拼接结果
         result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`
       }else{
@@ -119,7 +119,7 @@ class wxService extends Service {
         if(allRubs.length > 0){
           let cids = _.map(allRubs,(a)=>{return a.cId})
           classifies = await ctx.model.Classify.findAllById(cids);
-          let {rMsg,rcMsg} = this.getSearchMsg(classifies,allRubs)
+          let {rMsg,rcMsg} = this.getSearchMsg(classifies,allRubs,kw)
           result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`
           
         }else{
