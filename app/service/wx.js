@@ -59,7 +59,7 @@ class wxService extends Service {
   }
   // 推荐信息
   recommenMsg(msg,c){
-    return `"${msg}":"\n${c.c_name}"\n`
+    return `"${msg}属于":"${c.c_name}"\n`
   }
 
   //处理数据
