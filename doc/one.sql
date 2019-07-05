@@ -1,0 +1,8 @@
+CREATE TABLE `one_sentence` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `o_content` VARCHAR(1024) NOT NULL DEFAULT '' COMMENT '内容',
+  `o_type` TINYINT  NOT NULL DEFAULT 1 COMMENT '1 文案', 
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间', 
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
