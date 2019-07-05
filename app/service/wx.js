@@ -89,7 +89,7 @@ class wxService extends Service {
       const service = ctx.service;
       //查垃圾
   
-      let rub = await Promise.all([ctx.model.Rubbish.findByName(kw),ctx.model.Rubbish.findAll({r_name:{[Op.like]:kw}},5)]);
+      let rub = await Promise.all([ctx.model.Rubbish.findByName(kw),ctx.model.Rubbish.findAllByParam({r_name:{[Op.like]:kw}},5)]);
       let result = '';
       let classifies = [];
       let uniqRet = rub[0];
@@ -103,7 +103,7 @@ class wxService extends Service {
       let allRubs = unUniqRet;
       if(cids.length > 0){
         //查垃圾分类
-        classifies = await ctx.model.Classify.findAll(cids);
+        classifies = await ctx.model.Classify.findAllById(cids);
         let {rMsg,rcMsg} = this.getSearchMsg(allRubs)
         // 拼接结果
         result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`

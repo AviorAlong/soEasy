@@ -26,7 +26,7 @@ module.exports = app => {
         }
       })
     }
-    Classify.findById = async function(ids,limit=3) {
+    Classify.findAllById = async function(ids,limit=3) {
       return await this.findAll({
         where: {
           id: ids

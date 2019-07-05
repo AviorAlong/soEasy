@@ -23,7 +23,7 @@ module.exports = app => {
             r_content:r_content
       });
     }
-    Rubbish.findAll= async function(param,limit){
+    Rubbish.findAllByParam= async function(param,limit){
       return await this.findAll({
         where: param,
         limit: limit || 1
