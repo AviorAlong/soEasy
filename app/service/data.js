@@ -20,11 +20,10 @@ const idDict = {"1":3,"2":2,"3":3,"4":1}
 class ClassifyService extends Service {
     async getClassifyFromShfb(kw){
         try {
-            let htm = await utilHttp.httpGet(`${global.config.search.shfb}`,{"kw": kw})
+            let htm = await utilHttp.httpGet(`${this.config.search.shfb}`,{"kw": kw})
             let $ = cheerio.load(htm);
             let r_name = $('#txtKeyword').val();
             let mainInfo =$('.info > p > span').text()
-            let ret = []
             if(mainInfo && r_name){
                 let tmp = {
                     r_name,
@@ -47,7 +46,7 @@ class ClassifyService extends Service {
 
     async getClassifyFromLsdp(kw){
         try {
-            let data = await utilHttp.httpPost(`${global.config.search.lsdq}`,{"keyword": kw})
+            let data = await utilHttp.httpPost(`${this.config.search.lsdq}`,{"keyword": kw})
             let lj = []
             for(let i of data){
                 let r_name = i.wiki_title

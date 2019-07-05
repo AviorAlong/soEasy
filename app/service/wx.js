@@ -20,9 +20,9 @@ class wxService extends Service {
            return token
          }
       }
-      let appid = global.config.wxParam.appid;
-      let secret = global.config.wxParam.appSecret
-      let url = global.config.wxApi.access_token
+      let appid = this.config.wxParam.appid;
+      let secret = this.config.wxParam.appSecret
+      let url = this.config.wxApi.access_token
       let params = {grant_type:"client_credential",appid:appid,secret:secret}
       let ret = await utilReq.httpGet(url,params)
       if(ret){
@@ -41,7 +41,7 @@ class wxService extends Service {
 
   async setMenu(){
     let token  = await this.getAccessToken();
-    let url = `${global.config.wxApi.menu}${token}`;
+    let url = `${this.config.wxApi.menu}${token}`;
     let ret = await utilReq.httpPost(url,menuConf);
     if(ret.errcode === 0){
       return true
