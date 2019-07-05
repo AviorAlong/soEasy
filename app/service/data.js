@@ -23,19 +23,19 @@ class ClassifyService extends Service {
             let htm = await utilHttp.httpGet(`${this.config.search.shfb}`,{"kw": kw})
             let $ = cheerio.load(htm);
             let r_name = $('#txtKeyword').val();
-            let mainInfo =$('.info > p > span').text()
-            if(mainInfo && r_name){
-                let id = ljDict[mainInfo.trim()];
+            let c_name =$('.info > p > span').text()
+            if(c_name && r_name){
+                let id = ljDict[c_name.trim()];
                 let tmp = {
                     r_name,
                     cId: id,
-                    content:''
+                    r_content:''
                 }
                 let a = await this.ctx.model.Rubbish.findByName(r_name)
                 if(!a){
                     await this.ctx.model.Rubbish.insert(tmp)
                 }
-                return [{r_name,c_name,cId:id,content:''}]
+                return [{r_name,c_name,cId:id,r_content:''}]
             }  
             
 
@@ -56,10 +56,10 @@ class ClassifyService extends Service {
             for(let i of data){
                 let r_name = i.wiki_title
                 let cId = idDict[i.wiki_type]
-                let content = i.wiki_content
+                let r_content = i.wiki_content
                 let c_name = ljNumDict[cId]
                 let tmp = {r_name,cId,content}
-                let tmpr = {r_name,c_name,cId,content}
+                let tmpr = {r_name,c_name,cId,r_content}
                 lj.push(tmpr)
                 let a = await this.ctx.model.Rubbish.findByName(r_name)
                 if(!a){
