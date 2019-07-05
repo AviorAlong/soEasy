@@ -30,11 +30,15 @@ class ClassifyService extends Service {
                     cId: ljDict[mainInfo.trim()],
                     content:''
                 }
-                this.ctx.model.Rubbish.insert(tmp)
+                let a = await this.ctx.model.Rubbish.findByName(r_name)
+                if(!a){
+                    await this.ctx.model.Rubbish.insert(tmp)
+                }
                 return [{r_name,c_name,content:''}]
             }  
+            
 
-            return false
+            return []
             
         }catch(err){
             console.log(err)
@@ -56,7 +60,11 @@ class ClassifyService extends Service {
                 let tmp = {r_name,cId,content}
                 let tmpr = {r_name,c_name,content}
                 lj.push(tmpr)
-                this.ctx.model.Rubbish.insert(tmp)
+                let a = await this.ctx.model.Rubbish.findByName(r_name)
+                if(!a){
+                    await this.ctx.model.Rubbish.insert(tmp)
+                }
+               
 
             }
             
