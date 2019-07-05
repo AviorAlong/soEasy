@@ -5,7 +5,6 @@ class DataController extends Controller {
       
       const {ctx} = this;
       const body = ctx.query;
-      const service = ctx.service;
        
       //查库
       let r = await ctx.model.Rubbish.findByName(r_name);

@@ -13,7 +13,8 @@ async function httpGet(url,param){
 async function httpPost(url,param){
     try {
         let ret = await axios.post(url,param);
-        return ret.data
+        console.log(url,ret.data)
+        return ret.data || []
     }catch(err){
         console.log(err)
     }
