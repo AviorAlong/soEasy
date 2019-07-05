@@ -62,7 +62,8 @@ class wxService extends Service {
     return `"${kw}":"${classifyInfo.c_name}"\n`
   }
 
-    getSearchMsg(allRubs){
+  //处理数据
+  getSearchMsg(classifies,allRubs){
       let rMsg = '';
       let rcMsg = ''
       for(let i of allRubs){
@@ -104,7 +105,7 @@ class wxService extends Service {
       if(cids.length > 0){
         //查垃圾分类
         classifies = await ctx.model.Classify.findAllById(cids);
-        let {rMsg,rcMsg} = this.getSearchMsg(allRubs)
+        let {rMsg,rcMsg} = this.getSearchMsg(classifies,allRubs)
         // 拼接结果
         result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`
       }else{
@@ -114,8 +115,11 @@ class wxService extends Service {
         let lsdq = ret[1] || [];
         //合并数据并去重
         allRubs = _.union(shfb,lsdq,'r_name')
+
         if(allRubs.length > 0){
-          let {rMsg,rcMsg} = this.getSearchMsg(allRubs)
+          let cids = _.map(allRubs,(a)=>{return a.cId})
+          classifies = await ctx.model.Classify.findAllById(cids);
+          let {rMsg,rcMsg} = this.getSearchMsg(classifies,allRubs)
           result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`
           
         }else{

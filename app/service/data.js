@@ -25,16 +25,17 @@ class ClassifyService extends Service {
             let r_name = $('#txtKeyword').val();
             let mainInfo =$('.info > p > span').text()
             if(mainInfo && r_name){
+                let id = ljDict[mainInfo.trim()];
                 let tmp = {
                     r_name,
-                    cId: ljDict[mainInfo.trim()],
+                    cId: id,
                     content:''
                 }
                 let a = await this.ctx.model.Rubbish.findByName(r_name)
                 if(!a){
                     await this.ctx.model.Rubbish.insert(tmp)
                 }
-                return [{r_name,c_name,content:''}]
+                return [{r_name,c_name,cId:id,content:''}]
             }  
             
 
@@ -58,7 +59,7 @@ class ClassifyService extends Service {
                 let content = i.wiki_content
                 let c_name = ljNumDict[cId]
                 let tmp = {r_name,cId,content}
-                let tmpr = {r_name,c_name,content}
+                let tmpr = {r_name,c_name,cId,content}
                 lj.push(tmpr)
                 let a = await this.ctx.model.Rubbish.findByName(r_name)
                 if(!a){
