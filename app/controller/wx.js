@@ -1,5 +1,4 @@
-const Controller = require('egg').Controller;
-// const crypto = require('crypto');
+const Controller = require('egg').Controller; 
 
  
 class WXController extends Controller {

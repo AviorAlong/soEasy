@@ -61,6 +61,25 @@ class wxService extends Service {
   recommenMsg(msg){
     return `"${kw}":"${classifyInfo.c_name}"\n`
   }
+
+    getSearchMsg(allRubs){
+      let rMsg = '';
+      let rcMsg = ''
+      for(let i of allRubs){
+        //实物  
+        let c = _.find(classifies,(cs)=>{return cs.id = i.cId})
+        if(i.r_name === kw){
+          rMsg = this.realMsg(i.r_name,c);
+        }else{
+        //推荐
+          rcMsg = `${rcMsg}${this.recommenMsg(i.r_name,c)}`
+        }
+    }
+    return {rMsg,rcMsg}
+  }
+  someFunny(){
+    return `老板出去吃大餐了，没空给您查小垃圾 \n 大众点评温馨提示您：吃都吃得没滋没味，怎能活得有滋有味`
+  }
   async getResultByKw(kw) {
       const {ctx} = this;
       if(!kw){
@@ -85,30 +104,25 @@ class wxService extends Service {
       if(cids.length > 0){
         //查垃圾分类
         classifies = await ctx.model.Classify.findAll(cids);
-        for(let i of allRubs){
-          //实物
-          let rMsg = '';
-          let rcMsg = ''
-          let c = _.find(classifies,(cs)=>{return cs.id = i.cId})
-          if(i.r_name === kw){
-            rMsg = this.realMsg(i.r_name,c);
-          }else{
-          //推荐
-            rcMsg = this.recommenMsg(i.r_name,c)
-          }
-        }
+        let {rMsg,rcMsg} = this.getSearchMsg(allRubs)
         // 拼接结果
-        result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的lj，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`
+        result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`
       }else{
+        // 去两个网站查数据
         let ret = await Promise.all([service.data.getClassifyFromShfb(kw),service.data.getClassifyFromLsdp(kw)]) ;
-        let shfb = ret[0];
-        let lsdq = ret[1];
-        if(shfb || lsdq ){
-          allRubs = _.union[shfb,lsdq]
-          classifies = await ctx.model.Classify.findByName(cInfo); 
+        let shfb = ret[0] || [];
+        let lsdq = ret[1] || [];
+        //合并数据并去重
+        allRubs = _.union(shfb,lsdq,'r_name')
+        if(allRubs.length > 0){
+          let {rMsg,rcMsg} = this.getSearchMsg(allRubs)
+          result = `${rMsg?`${rMsg}\n`:`没有找到您心仪的小垃圾，小易已经去帮您问了`}${rcMsg?`\n猜您还想找:\n${rcMsg}`:''}`
+          
         }else{
-          return false
+          result =  this.someFunny()
         }
+       
+        
        
       }
     

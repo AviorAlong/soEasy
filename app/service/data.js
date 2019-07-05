@@ -10,6 +10,12 @@ const ljDict = {
     "可回收物":3,
     "有害垃圾":4
 } 
+const ljNumDict = {
+    "1":"干垃圾",
+    "2":"湿垃圾",
+    "3":"可回收物",
+    "4":"有害垃圾"
+} 
 const idDict = {"1":3,"2":2,"3":3,"4":1}
 class ClassifyService extends Service {
     async getClassifyFromShfb(kw){
@@ -20,13 +26,13 @@ class ClassifyService extends Service {
             let mainInfo =$('.info > p > span').text()
             let ret = []
             if(mainInfo && r_name){
-                ret = {
+                let tmp = {
                     r_name,
                     cId: ljDict[mainInfo.trim()],
                     content:''
                 }
-                this.ctx.model.Rubbish.insert(ret)
-                return [ret]
+                this.ctx.model.Rubbish.insert(tmp)
+                return [{r_name,c_name,content:''}]
             }  
 
             return false
@@ -47,9 +53,12 @@ class ClassifyService extends Service {
                 let r_name = i.wiki_title
                 let cId = idDict[i.wiki_type]
                 let content = i.wiki_content
+                let c_name = ljNumDict[cId]
                 let tmp = {r_name,cId,content}
-                lj.push(tmp)
+                let tmpr = {r_name,c_name,content}
+                lj.push(tmpr)
                 this.ctx.model.Rubbish.insert(tmp)
+
             }
             
             return lj
