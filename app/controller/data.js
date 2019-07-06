@@ -4,7 +4,7 @@ class DataController extends Controller {
   async import() {
       
       const {ctx} = this;
-      const body = ctx.query;
+      const body = ctx.request.body;
       let r_name = body.r_name
       //查库
       let r = await ctx.model.Rubbish.findByName(r_name);
