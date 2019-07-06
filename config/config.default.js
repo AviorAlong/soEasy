@@ -19,7 +19,8 @@ exports.sequelize = {
 
 exports.security = {
   csrf: {
-     ignore: '/wx'
+     ignore: ['/wx','/data/import'],
+     
   },
 }
 
