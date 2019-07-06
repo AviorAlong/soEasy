@@ -58,7 +58,7 @@ class ClassifyService extends Service {
                 let cId = idDict[i.wiki_type]
                 let r_content = i.wiki_content
                 let c_name = ljNumDict[cId]
-                let tmp = {r_name,cId,content}
+                let tmp = {r_name,cId,r_content}
                 let tmpr = {r_name,c_name,cId,r_content}
                 lj.push(tmpr)
                 let a = await this.ctx.model.Rubbish.findByName(r_name)
