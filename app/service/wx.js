@@ -93,7 +93,7 @@ class wxService extends Service {
       //查垃圾
   
       // let rub = await Promise.all([ctx.model.Rubbish.findByName(kw),ctx.model.Rubbish.findAllByParam({r_name:{[Op.like]:kw}},5)]);
-      let rub = await ctx.model.Rubbish.findAllByParam({r_name:{[Op.like]:kw}},5)
+      let rub = await ctx.model.Rubbish.findAllByParam({r_name:{[Op.like]:`%${kw}%`}},5)
       let result = '';
       let classifies = [];
       let allRubs = rub || [];
