@@ -68,7 +68,7 @@ class wxService extends Service {
       let rcMsg = ''
       for(let i of allRubs){
         //实物  
-        let c = _.find(classifies,(cs)=>{return cs.id = i.cId})
+        let c = _.find(classifies,(cs)=>{return cs.id == i.cId})
         if(i.r_name === kw){
           rMsg = this.realMsg(i.r_name,c);
         }else{
@@ -78,9 +78,11 @@ class wxService extends Service {
     }
     return {rMsg,rcMsg}
   }
+
   someFunny(){
     return `老板出去吃大餐了，没空给您查小垃圾 \n 大众点评温馨提示您：吃都吃得没滋没味，怎能活得有滋有味`
   }
+
   async getResultByKw(kw) {
       const {ctx} = this;
       if(!kw){
