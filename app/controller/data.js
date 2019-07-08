@@ -5,6 +5,7 @@ class DataController extends Controller {
       
       const {ctx} = this;
       const body = ctx.request.body;
+      console.log('----------data--------------',body)
       let r_name = body.r_name
       //查库
       let r = await ctx.model.Rubbish.findByName(r_name);
