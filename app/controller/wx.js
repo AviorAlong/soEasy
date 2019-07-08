@@ -67,8 +67,9 @@ class WXController extends Controller {
                             lsInfo= `最新规定:上午7:00至9:00、下午5:30至7:30为垃圾投放时间`
                             break;
                         case /玉萍$/.test(content) === true:
-                            
+                         
                             lsInfo= `温馨提示，您要找的可能是朕的小可爱，请注意言辞，否则告诉你麻麻` 
+                            console.log(lsInfo)
                             break;   
                         default: 
                            
