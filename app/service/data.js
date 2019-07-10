@@ -24,7 +24,7 @@ class ClassifyService extends Service {
             let $ = cheerio.load(htm);
             let r_name = $('#txtKeyword').val();
             let c_name =$('.info > p > span').text()
-            console.log(`${this.config.search.shfb}:${r_name},${c_name}`)
+            console.log(`${this.config.search.shfb}:${htm}`)
             if(c_name && r_name){
                 let id = ljDict[c_name.trim()];
                 let tmp = {
