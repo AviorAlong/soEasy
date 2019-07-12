@@ -6,7 +6,7 @@ exports.readJosn = async (file)=>{
    return jsonObj
 }
 
-exports.writeJosn = async (content,file)=>{
+exports.writeJosn = async (file,content)=>{
     let data = JSON.stringify(content)
     fs.writeFileSync(file,data);
 }
