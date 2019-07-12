@@ -51,37 +51,37 @@ class WXController extends Controller {
                 let lsInfo = ''
                 ctx.logger.info(`用户${fromUser}搜索词：${content}`)
                 if(msgType=== 'text'){
-                    if(/玉萍$/.test(content) === true){                         
-                            lsInfo= `温馨提示，您要找的可能是朕的小可爱，请注意言辞，否则告诉你麻麻` 
-                            console.log(lsInfo)
-                            break;   
-                    }
-                    switch(content){
-                        case '口诀':
-                            lsInfo= `猪能吃的是湿垃圾，猪都不要吃的是干垃圾，猪吃了会死的是有害垃圾，可以卖出去换猪的是可回收垃圾`;
-                            break;
-                        case '互联网人':
-                            lsInfo= `不好意思，这类人不适合生产垃圾，因为他们“没-时-间”扔垃圾`;
-                            break;
-                        case '趣事':
-                            lsInfo= `段子手写代码去了，再等等吧`.replace(/^\s*/gm, '');
-
-                            break;
-                        case '投放时间':
-                            
-                            lsInfo= `最新规定:上午7:00至9:00、下午5:30至7:30为垃圾投放时间`
-                            break;
-                       
-                        default: 
+                    if(/玉萍$/.test(content)){
+                        lsInfo= `温馨提示，您要找的可能是朕的小可爱，请注意言辞，否则告诉你麻麻` 
+                    }else{
+                        switch(content){
+                            case '口诀':
+                                lsInfo= `猪能吃的是湿垃圾，猪都不要吃的是干垃圾，猪吃了会死的是有害垃圾，可以卖出去换猪的是可回收垃圾`;
+                                break;
+                            case '互联网人':
+                                lsInfo= `不好意思，这类人不适合生产垃圾，因为他们“没-时-间”扔垃圾`;
+                                break;
+                            case '趣事':
+                                lsInfo= `段子手写代码去了，再等等吧`.replace(/^\s*/gm, '');
+    
+                                break;
+                            case '投放时间':
+                                
+                                lsInfo= `最新规定:上午7:00至9:00、下午5:30至7:30为垃圾投放时间`
+                                break;
                            
-                            lsInfo = await ctx.service.wx.getResultByKw(content);
-                            console.log('查到的数据：',lsInfo)
-                            if(!lsInfo){
-                                lsInfo = `未查询到您要查询的垃圾所属的分类(-^-)，小易这就去把老板拖回来给您找`.replace(/^\s*/gm, '');
-                            }
-                            
-
-                    }
+                            default: 
+                               
+                                lsInfo = await ctx.service.wx.getResultByKw(content);
+                                console.log('查到的数据：',lsInfo)
+                                if(!lsInfo){
+                                    lsInfo = `未查询到您要查询的垃圾所属的分类(-^-)，小易这就去把老板拖回来给您找`.replace(/^\s*/gm, '');
+                                }
+                                
+    
+                        }
+                    }  
+                  
                 }else if(msgType==='event'){
                     if(event === 'subscribe'){
                         lsInfo = `
