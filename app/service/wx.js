@@ -20,7 +20,7 @@ class wxService extends Service {
            return token
          }
       }
-      let appid = this.config.wxParam.appid;
+      let appid = this.config.wxParam.appId;
       let secret = this.config.wxParam.appSecret
       let url = this.config.wxApi.access_token
       let params = {grant_type:"client_credential",appid:appid,secret:secret}
