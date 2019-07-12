@@ -26,8 +26,8 @@ class wxService extends Service {
       let params = {grant_type:"client_credential",appid:appid,secret:secret}
       let ret = await utilReq.httpGet(url,params)
       console.log(url,params, ret)
-      if(ret){
-        let access_token = ret.access_token;
+      if(ret && ret.data){
+        let access_token = ret.data.access_token;
         let startTime =  Date.parse(new Date())/1000;
         let cont = {
           "token": access_token,
